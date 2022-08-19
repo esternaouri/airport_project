@@ -1,0 +1,22 @@
+@import "./scss/setup";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vertical{
+  display: flex;
+  flex-direction: column;
+}
+.horizontal{
+  display: flex;
+  flex-direction: row;
+}
