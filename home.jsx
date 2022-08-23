@@ -9,18 +9,22 @@ const Home= (props) => {
                 <>
                   <nav>
                     <ul className='horizontal'>
-                      <button>
-                      <Link to="/">111111</Link>
+                      <li>
+                      <Link to="/">A.I.P</Link>
 
-                      </button>
+                      </li>
+<br></br>
+                      <li>
+                      <Link to="/two">MTAR, TAF, NOTAM</Link>
 
-                      <button>
-                      <Link to="/two">222222</Link>
+                      </li>
+                      <br></br>
 
-                      </button>
-                      <button>
-                        <Link to="/three">3333</Link>
-                      </button>
+                      <li>
+                        <Link to="/three">FLIGHTS REGISTRATION</Link>
+                      </li>
+                      <br></br>
+
                     </ul>
                   </nav>
             
