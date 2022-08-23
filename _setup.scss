@@ -1,0 +1,95 @@
+.subTitle1{
+    margin: auto;
+     border: 1px solid black;
+      width: 250px;
+   background-color: grey;
+   color: white;
+   border-bottom: 1px solid black;
+   min-height:20px;
+}
+.subTitle{
+    margin-left: 695px;
+    width: 2px;
+   background-color: rgb(189, 242, 247);
+   color: black;
+   border-bottom: 1px solid black;
+   min-height:5px;
+   font-weight: 1000px
+  
+
+}
+.cursor{
+    cursor: pointer;
+}
+.horizontal{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content:center;
+    flex-wrap: wrap;
+    
+}
+.vertical{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+
+
+}
+li{
+  display: inline-block;
+  background-color: white;
+  color: black;
+  list-style-position:inside;
+  border: 1px solid black;
+  border-radius: 12%;
+  padding-left: 12% ;
+  margin: 1%;
+  box-shadow: 3px black;
+  display: flex;
+  justify-content: center;
+}
+a{
+  display: flex;
+  justify-content: center;
+  color: aliceblue;
+}
+
+form {
+    width: 450px;
+    margin: auto;
+    border: 1px solid black;
+  }
+  form * {
+    margin: 5px;
+    display: inline-block;
+  }
+
+  label {
+    font-weight: bold;
+    width: 150px;
+  }
+
+  input,
+  select {
+    width: 250px;
+  }
+
+
+
+  @media screen and (max-width: 600px) {
+    form {
+      width: 270px;
+    }
+    form * {
+      display: block;
+    }
+  }
+  nav{
+    padding: 0.002%;
+    background-color:aqua;
+    color: azure;
+  }
+  a{
+  color:aliceblue
+  }
