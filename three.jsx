@@ -4,7 +4,8 @@ const Three= (props) => {
     
         const [inputs, setInputs] = React.useState({});
         const [Allflights, setAllflights] = React.useState([]);
-
+        const [filterAllflights, setfilterAllflights] = React.useState([]);
+        const [id, setId] = React.useState("");
         const handleChange = (event) => {
           const name = event.target.name;
           const value = event.target.value;
@@ -17,19 +18,39 @@ const Three= (props) => {
 
 
         }
-        //console.log(Allflights)
-
+          const chnfil=(e)=>{
+          setId(e.target.value)
+          }
+        const subfil=(e)=>{
+          e.preventDefault();
+          Allflights.filter((item)=>{if (item.pilotid==id) 
+             setfilterAllflights(filterAllflights => [...filterAllflights, item]);
+          })
+        
+        }
+        const clr=()=>{
+          setfilterAllflights([])
+        }
+        console.log(inputs)
         return (
 <div> 
 <h1>Flight Planning Registration And Confirrmation</h1>
 
 <h2>Flights Registration</h2>
     <form onSubmit={handleSubmit}>
-      <label>Pilot Name and ID:
+    <label> Pilot ID:
       <input 
         type="text" 
         name="pilotid" 
         value={inputs.pilotid || ""} 
+        onChange={handleChange}
+      />
+      </label>
+      <label>Pilot Name:
+      <input 
+        type="text" 
+        name="pilotname" 
+        value={inputs.pilotname || ""} 
         onChange={handleChange}
       />
       </label>
@@ -90,9 +111,23 @@ const Three= (props) => {
     </form>
   <div>
 <h2>Flights Confirmation</h2>
-{Allflights.map((item) =>
-    <ul><span>{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span><span>{item.destination}{" "}</span><span>{item.arivaltime}{" "}</span></ul>
+<form ON onSubmit={subfil}>
+<label>Filtre by Pilot Id</label>
+        <input 
+          type="text" 
+          name="filter"  
+           onChange={chnfil}/>
+            <input type="submit" />
+            </form>
+{Allflights.map((item,index) =>
+    <ul ><span>{" conf n#:   "}{index}{" data: "}{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span><span>{item.destination}{" "}</span><span>{item.arivaltime}{" "}</span></ul>
     )  }
+    FILTER:
+    {filterAllflights.map((item) =>
+    <ul><span>{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span><span>{item.destination}{" "}</span><span>{item.arivaltime}{" "}</span></ul>
+      )  } 
+    <button on onClick={clr}>clr</button>
+  
   </div>
 </div>
 );
