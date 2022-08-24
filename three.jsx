@@ -25,11 +25,16 @@ const Three= (props) => {
           e.preventDefault();
           Allflights.filter((item)=>{if (item.pilotid==id) 
              setfilterAllflights(filterAllflights => [...filterAllflights, item]);
-             if(id==false){
+             if(id=="*"){
               setfilterAllflights(filterAllflights => [...filterAllflights, item])
              }
           })
         
+        }
+        const del =(i)=>{
+          const arr=filterAllflights.splice(i,filterAllflights.length-1)
+         setfilterAllflights(arr)
+
         }
         const clr=()=>{
           setfilterAllflights([])
@@ -125,7 +130,9 @@ const Three= (props) => {
 
     FILTER:
     {filterAllflights.map((item,index) =>
-    <ul><span>{"n#- "+index+": "}{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span><span>{item.destination}{" "}</span><span>{item.arivaltime}{" "}</span><button>edit</button><button>del</button></ul>
+    <ul><span>{"n#- "+index+": "}{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span>
+    <span>{item.destination}{" "}</span>
+    <span>{item.arivaltime}{" "}</span><button >edit</button><button onClick={()=>del(index)}>del</button></ul>
       )  } 
     <button on onClick={clr}>clr</button>
   
