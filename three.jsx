@@ -25,6 +25,9 @@ const Three= (props) => {
           e.preventDefault();
           Allflights.filter((item)=>{if (item.pilotid==id) 
              setfilterAllflights(filterAllflights => [...filterAllflights, item]);
+             if(id==false){
+              setfilterAllflights(filterAllflights => [...filterAllflights, item])
+             }
           })
         
         }
@@ -119,12 +122,10 @@ const Three= (props) => {
            onChange={chnfil}/>
             <input type="submit" />
             </form>
-{Allflights.map((item,index) =>
-    <ul ><span>{" conf n#:   "}{index}{" data: "}{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span><span>{item.destination}{" "}</span><span>{item.arivaltime}{" "}</span></ul>
-    )  }
+
     FILTER:
-    {filterAllflights.map((item) =>
-    <ul><span>{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span><span>{item.destination}{" "}</span><span>{item.arivaltime}{" "}</span></ul>
+    {filterAllflights.map((item,index) =>
+    <ul><span>{"n#- "+index+": "}{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span><span>{item.destination}{" "}</span><span>{item.arivaltime}{" "}</span><button>edit</button><button>del</button></ul>
       )  } 
     <button on onClick={clr}>clr</button>
   
