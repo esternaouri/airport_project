@@ -32,12 +32,12 @@ const Three= (props) => {
         
         }
         const del =(i)=>{
-          const arr=filterAllflights.splice(i,filterAllflights.length-1)
-         setfilterAllflights(arr)
-
+          filterAllflights.splice(i,1)
+          setfilterAllflights([...filterAllflights])
+         
         }
         const clr=()=>{
-          setfilterAllflights([])
+        setfilterAllflights([])
         }
         console.log(inputs)
         return (
@@ -130,7 +130,7 @@ const Three= (props) => {
 
     FILTER:
     {filterAllflights.map((item,index) =>
-    <ul><span>{"n#- "+index+": "}{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span>
+    <ul><span>{"index: "+index+": "}{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span>
     <span>{item.destination}{" "}</span>
     <span>{item.arivaltime}{" "}</span><button >edit</button><button onClick={()=>del(index)}>del</button></ul>
       )  } 
