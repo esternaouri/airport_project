@@ -6,6 +6,13 @@ const Three= (props) => {
         const [Allflights, setAllflights] = React.useState([]);
         const [filterAllflights, setfilterAllflights] = React.useState([]);
         const [id, setId] = React.useState("");
+        const[index,setIndex]=React.useState("");
+
+        const[newDate,setnewDate]=React.useState("");
+
+        const[newARC,setNewARC]=React.useState("");
+
+        const[isActiveEdit,setIsactivEdit]=React.useState(false)
         const handleChange = (event) => {
           const name = event.target.name;
           const value = event.target.value;
@@ -36,11 +43,46 @@ const Three= (props) => {
           setfilterAllflights([...filterAllflights])
          
         }
+        const edit=(e)=>{
+          e.preventDefault();
+
+          const obj={
+          pilotid :filterAllflights[index].pilotid,
+          pilotname:filterAllflights[index].pilotname,
+          aircraftid:newARC,
+          Aircrafttype:filterAllflights[index].destination,
+          departure:filterAllflights[index].departure,
+          destination: filterAllflights[index].destination,
+          arivaltime:newDate,
+          fuel:filterAllflights[index].fuel,
+          flightduration:filterAllflights[index].flightduration,
+
+        }
+
+        if (index !== -1) {
+          filterAllflights[index] = obj;
+
+      }
+              setfilterAllflights(filterAllflights=>[...filterAllflights])
+
+        }
+          
         const clr=()=>{
         setfilterAllflights([])
-        }
-        console.log(inputs)
-        return (
+        //setAllflights([])
+
+      }
+
+     const iToChang=(e)=>{
+      setIndex( e.target.value)
+     }
+const dToChang =(e)=>{
+  setnewDate(e.target.value)
+}
+const eToChang =(e)=>{
+  setNewARC(e.target.value)
+} 
+return (
 <div> 
 <h1>Flight Planning Registration And Confirrmation</h1>
 
@@ -132,11 +174,36 @@ const Three= (props) => {
     {filterAllflights.map((item,index) =>
     <ul><span>{"index: "+index+": "}{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span>
     <span>{item.destination}{" "}</span>
-    <span>{item.arivaltime}{" "}</span><button >edit</button><button onClick={()=>del(index)}>del</button></ul>
+    <span>{item.arivaltime}{" "}</span><button onClick={()=>del(index)}>del</button></ul>
       )  } 
     <button on onClick={clr}>clr</button>
-  
   </div>
+  <button onClick={()=>setIsactivEdit(!isActiveEdit)} >edit</button>
+{isActiveEdit&&<form onSubmit={edit}>
+  <label> new Aircraft ID:
+        <input 
+          type="number" 
+          onChange={eToChang}
+
+/> 
+  </label>
+  <label> :new Date
+        <input 
+          type="text" 
+          onChange={dToChang}
+           
+        />  
+        </label>
+        <label> :index
+        <input 
+          type="text"
+          onChange={iToChang}
+        />  
+        </label>
+        <input type="submit" />
+
+  </form>
+  }
 </div>
 );
     
