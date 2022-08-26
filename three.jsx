@@ -169,17 +169,18 @@ return (
            onChange={chnfil}/>
             <input type="submit" />
             </form>
+            <div className='form'>
 
-    FILTER:
+     <div>
     {filterAllflights.map((item,index) =>
     <ul><span>{"index: "+index+": "}{item.pilotid}{" "}</span><span>{item.Aircrafttype}{" "}</span>
     <span>{item.destination}{" "}</span>
-    <span>{item.arivaltime}{" "}</span><button onClick={()=>del(index)}>del</button></ul>
+    <span>{item.arivaltime}{" "}</span><button onClick={()=>del(index)}>🛢️</button> <button onClick={()=>setIsactivEdit(!isActiveEdit)} >✏️</button></ul>
       )  } 
-    <button on onClick={clr}>clr</button>
-  </div>
-  <button onClick={()=>setIsactivEdit(!isActiveEdit)} >edit</button>
-{isActiveEdit&&<form onSubmit={edit}>
+      </div>
+ 
+<div className='form'>
+{isActiveEdit&&<form  onSubmit={edit}>
   <label> new Aircraft ID:
         <input 
           type="number" 
@@ -203,7 +204,12 @@ return (
         <input type="submit" />
 
   </form>
-  }
+  } </div>
+  
+  </div></div>
+  
+      <button on onClick={clr}>clr</button>
+
 </div>
 );
     
